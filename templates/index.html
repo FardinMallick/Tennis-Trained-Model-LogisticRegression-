@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Play Tennis Prediction</title>
+
+    <link rel="stylesheet"
+    href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>🎾 Play Tennis Prediction</h1>
+
+    <form action="/predict" method="POST">
+
+        <label>Outlook</label>
+
+        <select name="outlook">
+
+            <option value="Sunny"
+            {% if selected_outlook == 'Sunny' %}selected{% endif %}>
+            Sunny
+            </option>
+
+            <option value="Overcast"
+            {% if selected_outlook == 'Overcast' %}selected{% endif %}>
+            Overcast
+            </option>
+
+            <option value="Rain"
+            {% if selected_outlook == 'Rain' %}selected{% endif %}>
+            Rain
+            </option>
+
+        </select>
+
+        <label>Temperature</label>
+
+        <select name="temp">
+
+            <option value="Hot"
+            {% if selected_temp == 'Hot' %}selected{% endif %}>
+            Hot
+            </option>
+
+            <option value="Mild"
+            {% if selected_temp == 'Mild' %}selected{% endif %}>
+            Mild
+            </option>
+
+            <option value="Cool"
+            {% if selected_temp == 'Cool' %}selected{% endif %}>
+            Cool
+            </option>
+
+        </select>
+
+        <label>Humidity</label>
+
+        <select name="humidity">
+
+            <option value="High"
+            {% if selected_humidity == 'High' %}selected{% endif %}>
+            High
+            </option>
+
+            <option value="Normal"
+            {% if selected_humidity == 'Normal' %}selected{% endif %}>
+            Normal
+            </option>
+
+        </select>
+
+        <label>Wind</label>
+
+        <select name="wind">
+
+            <option value="Weak"
+            {% if selected_wind == 'Weak' %}selected{% endif %}>
+            Weak
+            </option>
+
+            <option value="Strong"
+            {% if selected_wind == 'Strong' %}selected{% endif %}>
+            Strong
+            </option>
+
+        </select>
+
+        <button type="submit">
+            Predict
+        </button>
+
+    </form>
+
+    {% if prediction %}
+
+        <div class="result">
+            {{ prediction }}
+        </div>
+
+    {% endif %}
+
+</div>
+
+</body>
+
+</html>
